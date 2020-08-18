@@ -8,29 +8,18 @@ var getElementsByClassName = function(className
 ) {
   var result = [];
   var element = document.body;
-  console.log(element);
-
-
-
-
-  var recursiveFunction = function(element) {
-    // if (element.length > 0) {
-    //   recursiveFunction(element);
-    // }
-
+  var checkForClass = function(element) {
     if (element.classList && element.classList.contains(className)) {
       result.push(element);
     }
-
     if (element.childNodes.length > 0) {
       for (var i = 0; i < element.childNodes.length; i++) {
-        recursiveFunction(element.childNodes[i]);
+        checkForClass(element.childNodes[i]);
       }
     }
-
   };
 
-  recursiveFunction(element);
+  checkForClass(element);
 
   return result;
 };
